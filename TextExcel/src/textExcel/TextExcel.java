@@ -11,5 +11,10 @@ public class TextExcel
 	public static void main(String[] args)
 	{
 	    // Add your command loop here
+		Scanner userInput = new Scanner(System.in);
+		String input = userInput.next();
+		while (!input.equals("quit")) {
+			processCommand(input);
+		}
 	}
 }
