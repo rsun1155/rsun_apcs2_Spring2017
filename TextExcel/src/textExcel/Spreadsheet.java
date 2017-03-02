@@ -4,11 +4,21 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-
+	private Cell [][] chart;
+	public Spreadsheet() {
+		chart = new Cell [20][12];
+		for (int i = 0; i < chart.length; i++) {
+			for (int j = 0; j < chart[0].length; j++) {
+				chart[i][j] = new EmptyCell();
+			}
+		}
+		
+	}
 	@Override
 	public String processCommand(String command)
 	{
 		// TODO Auto-generated method stub
+		String [] parseCommand = command.split(" ");
 		return null;
 	}
 
@@ -16,14 +26,14 @@ public class Spreadsheet implements Grid
 	public int getRows()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return chart.length;
 	}
 
 	@Override
 	public int getCols()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return chart[0].length;
 	}
 
 	@Override
