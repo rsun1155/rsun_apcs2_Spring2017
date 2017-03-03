@@ -6,6 +6,7 @@ public class SpreadsheetLocation implements Location
 {
 	int col = 0;
 	int row = 0;
+	String rowHolder = "";
     @Override
     public int getRow()
     {
@@ -22,10 +23,14 @@ public class SpreadsheetLocation implements Location
     
     public SpreadsheetLocation(String cellName)
     {
-    	for (int i = 0; i < cellName.length(); i++) {
+    	
     		col = cellName.charAt(0) - 'A';
-    		row = Character.getNumericValue(cellName.charAt(1));
+    		for (int i = 1; i < cellName.length(); i++) {
+    			rowHolder += cellName.charAt(i);
+    		}
+    		row = Integer.parseInt(rowHolder) - 1;
+    		
     	}
     }
 
-}
+

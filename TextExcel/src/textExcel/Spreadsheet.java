@@ -18,8 +18,13 @@ public class Spreadsheet implements Grid
 	public String processCommand(String command)
 	{
 		// TODO Auto-generated method stub
+		String outcome = "";
 		String [] parseCommand = command.split(" ");
-		return null;
+		for (int i = 0; i<parseCommand.length; i++) {
+			SpreadsheetLocation here = new SpreadsheetLocation(parseCommand[0]);
+			System.out.println(here.getCol());
+		}
+		return outcome;
 	}
 
 	@Override
