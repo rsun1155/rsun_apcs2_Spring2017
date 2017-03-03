@@ -13,8 +13,11 @@ public class TextExcel
 	    // Add your command loop here
 		Scanner userInput = new Scanner(System.in);
 		String input = userInput.next();
+		Spreadsheet excel = new Spreadsheet();
 		while (!input.equals("quit")) {
-			processCommand(input);
+			excel.processCommand(input);
+			input = userInput.next();
 		}
+		userInput.close();
 	}
 }
