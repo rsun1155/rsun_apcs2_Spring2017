@@ -1,6 +1,7 @@
 package textExcel;
 
-// Update this file with your own code.
+// Ryan Sun 2nd Period 3/5/2017
+// This class controls the behavior of the overall spreadsheet of the TextExcel project
 
 public class Spreadsheet implements Grid
 {
@@ -20,11 +21,7 @@ public class Spreadsheet implements Grid
 		// TODO Auto-generated method stub
 		String outcome = "";
 		String [] parseCommand = command.split(" ");
-		for (int i = 0; i<parseCommand.length; i++) {
-			SpreadsheetLocation here = new SpreadsheetLocation(parseCommand[0]);
-			System.out.println(here.getCol());
-		}
-		return outcome;
+				return outcome;
 	}
 
 	@Override

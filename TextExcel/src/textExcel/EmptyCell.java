@@ -1,5 +1,5 @@
 package textExcel;
-
+//Ryan Sun 2nd Period 3/5/17
 public class EmptyCell implements Cell {
 	public EmptyCell () {
 		
@@ -7,13 +7,13 @@ public class EmptyCell implements Cell {
 
 	@Override
 	public String abbreviatedCellText() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public String fullCellText() {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
