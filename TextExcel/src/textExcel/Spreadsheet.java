@@ -1,5 +1,7 @@
 package textExcel;
 
+import java.util.Arrays;
+
 // Ryan Sun 2nd Period 3/5/2017
 // This class controls the behavior of the overall spreadsheet of the TextExcel project
 
@@ -18,38 +20,42 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		// TODO Auto-generated method stub
+		
 		String outcome = "";
 		String [] parseCommand = command.split(" ");
+			if (parseCommand.length> 1 && parseCommand[1].contains("=")) {
+				SpreadsheetLocation c = new SpreadsheetLocation(parseCommand[0]);
+			
+			}
 				return outcome;
 	}
 
 	@Override
 	public int getRows()
 	{
-		// TODO Auto-generated method stub
+		
 		return chart.length;
 	}
 
 	@Override
 	public int getCols()
 	{
-		// TODO Auto-generated method stub
+		
 		return chart[0].length;
 	}
 
 	@Override
 	public Cell getCell(Location loc)
 	{
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public String getGridText()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		
+		return Arrays.deepToString(chart);
 	}
 
 }

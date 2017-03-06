@@ -8,13 +8,13 @@ public class EmptyCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 
-		return null;
+		return " ";
 	}
 
 	@Override
 	public String fullCellText() {
 	
-		return null;
+		return "|          |";
 	}
 
 }
