@@ -7,12 +7,12 @@ import java.util.Arrays;
 
 public class Spreadsheet implements Grid
 {
-	private Cell [][] chart;
+	private Cell [][] spreadsheet;
 	public Spreadsheet() {
-		chart = new Cell [20][12];
-		for (int i = 0; i < chart.length; i++) {
-			for (int j = 0; j < chart[0].length; j++) {
-				chart[i][j] = new EmptyCell();
+		spreadsheet = new Cell [20][12];
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[0].length; j++) {
+				spreadsheet[i][j] = new EmptyCell();
 			}
 		}
 		
@@ -23,43 +23,83 @@ public class Spreadsheet implements Grid
 		
 		String outcome = "";
 		String [] parseCommand = command.split(" ");
-				SpreadsheetLocation c = new SpreadsheetLocation(parseCommand[0]);
-			//Remember to return here
+			if (parseCommand.length == 1) {
+				int [] dimensions = getLoc(parseCommand[0]);
+				
+				return spreadsheet[dimensions[0]][dimensions[1]].fullCellText();
+			}
+			else if (parseCommand.length>1 && parseCommand[1].equals("=")) {
+				int [] dimensions = getLoc(parseCommand[0]);
+				String text = parseCommand[2];
+				for (int count = 3; count < parseCommand.length; count++){
+					text += " " + parseCommand[count];
+				}
+				spreadsheet[dimensions[0]][dimensions[1]] = new TextCell(text);
+				return getGridText();
+				
+			}
+			else if (parseCommand[0].contains("clear") && parseCommand.length == 1) {
+				clearSheet();
+				return getGridText();
+			}
+			else if (parseCommand[0].equals("clear")) {
+				clearCell(parseCommand[1]);
+				return getGridText();
+			}
+			else {
 			
 				return outcome;
+			}
 	}
 
 	@Override
 	public int getRows()
 	{
 		
-		return chart.length;
+		return spreadsheet.length;
 	}
 
 	@Override
 	public int getCols()
 	{
 		
-		return chart[0].length;
+		return spreadsheet[0].length;
 	}
 
 	@Override
 	public Cell getCell(Location loc)
 	{
 		
-		return ((SpreadsheetLocation)loc).getCellHere();
+		return spreadsheet[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
 	public String getGridText()
 	{
-		for (int i = 0; i < chart.length; i++) {
-			for (int j = 0; j < chart[0].length; j++) {
+		String [][] fauxArray = new String [20][12];
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[0].length; j++) {
+				fauxArray[i][j] = (spreadsheet[i][j].abbreviatedCellText());
 		
 			}
 		}
 		
-		return Arrays.deepToString(chart);
+		return Arrays.deepToString(fauxArray);
 	}
-
-}
+	public int [] getLoc(String command) {
+		SpreadsheetLocation loc = new SpreadsheetLocation(command);
+		int [] dimensions = {loc.getRow(), loc.getCol()};
+		return dimensions;
+	}
+	public void clearSheet() {
+		for (int i = 0; i < spreadsheet.length; i++) {
+			for (int j = 0; j < spreadsheet[0].length; j++) {
+				spreadsheet[i][j] = new EmptyCell();
+			}
+		}
+	}
+	public void clearCell(String location) {
+		int [] dimensions = getLoc(location);
+		this.spreadsheet[dimensions[0]][dimensions[1]] = new EmptyCell();
+	}
+	}
