@@ -23,10 +23,9 @@ public class Spreadsheet implements Grid
 		
 		String outcome = "";
 		String [] parseCommand = command.split(" ");
-			if (parseCommand.length> 1 && parseCommand[1].contains("=")) {
 				SpreadsheetLocation c = new SpreadsheetLocation(parseCommand[0]);
+			//Remember to return here
 			
-			}
 				return outcome;
 	}
 
@@ -48,12 +47,17 @@ public class Spreadsheet implements Grid
 	public Cell getCell(Location loc)
 	{
 		
-		return null;
+		return ((SpreadsheetLocation)loc).getCellHere();
 	}
 
 	@Override
 	public String getGridText()
 	{
+		for (int i = 0; i < chart.length; i++) {
+			for (int j = 0; j < chart[0].length; j++) {
+		
+			}
+		}
 		
 		return Arrays.deepToString(chart);
 	}
