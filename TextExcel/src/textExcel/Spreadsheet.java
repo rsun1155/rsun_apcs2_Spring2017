@@ -9,7 +9,7 @@ public class Spreadsheet implements Grid
 {
 	private Cell [][] spreadsheet;
 	public Spreadsheet() {
-		spreadsheet = new Cell [20][12];
+		spreadsheet = new Cell [this.getRows()][this.getCols()];
 		for (int i = 0; i < spreadsheet.length; i++) {
 			for (int j = 0; j < spreadsheet[0].length; j++) {
 				spreadsheet[i][j] = new EmptyCell();
@@ -56,14 +56,14 @@ public class Spreadsheet implements Grid
 	public int getRows()
 	{
 		
-		return spreadsheet.length;
+		return 20;
 	}
 
 	@Override
 	public int getCols()
 	{
 		
-		return spreadsheet[0].length;
+		return 12;
 	}
 
 	@Override
@@ -76,15 +76,21 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		String [][] fauxArray = new String [20][12];
-		for (int i = 0; i < spreadsheet.length; i++) {
-			for (int j = 0; j < spreadsheet[0].length; j++) {
-				fauxArray[i][j] = (spreadsheet[i][j].abbreviatedCellText());
-		
+		String fauxArray = getTopRow();
+		for (int i = 0; i < this.getRows(); i++) {
+			if (i < 9) {
+			fauxArray += i + 1 + "  ";
 			}
-		}
+			else {
+			fauxArray += i + 1 + " ";
+			}
+			for (int j = 0; j < this.getCols(); j++) {
+				fauxArray += spreadsheet[i][j].abbreviatedCellText();
+			}
+			fauxArray += "|\n";
+		}		
+			return fauxArray;
 		
-		return Arrays.deepToString(fauxArray);
 	}
 	public int [] getLoc(String command) {
 		SpreadsheetLocation loc = new SpreadsheetLocation(command);
@@ -102,4 +108,13 @@ public class Spreadsheet implements Grid
 		int [] dimensions = getLoc(location);
 		this.spreadsheet[dimensions[0]][dimensions[1]] = new EmptyCell();
 	}
+	public String getTopRow (){
+		String topRow = "   ";
+		for (char i = 'A'; i <= 'L'; i++) {
+			topRow += "|" + i + "         ";
+		}
+		topRow += "|\n";
+		return topRow;
+		}
 	}
+	

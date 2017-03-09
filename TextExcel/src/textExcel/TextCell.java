@@ -9,13 +9,13 @@ public class TextCell implements Cell {
 	@Override
 	public String abbreviatedCellText() {
 		if (value.length() >= 10) {
-			return "|" + value.substring(0, 10) + "|";
+			return "|" + value.substring(0, 10);
 		}
 		else { //This is padToTen
 			for (int i = value.length(); i < 10; i++) {
 				value += " ";
 			}
-			return "|" + value + "|";
+			return "|" + value;
 		}
 	}
 
