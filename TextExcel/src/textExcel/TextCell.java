@@ -8,20 +8,20 @@ public class TextCell implements Cell {
 
 	@Override
 	public String abbreviatedCellText() {
+		String fauxValue = value;
 		if (value.length() >= 10) {
-			return "|" + value.substring(0, 10);
+			return value.substring(0, 11);
 		}
 		else { //This is padToTen
 			for (int i = value.length(); i < 10; i++) {
-				value += " ";
+				fauxValue += " ";
 			}
-			return "|" + value;
+			return fauxValue;
 		}
 	}
 
 	@Override
 	public String fullCellText() {
-		
 		return value;
 	}
 	public void setValue(String text) {

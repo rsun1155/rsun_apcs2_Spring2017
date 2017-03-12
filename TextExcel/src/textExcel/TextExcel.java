@@ -12,18 +12,16 @@ public class TextExcel
 	public static void main(String[] args)
 	{
 	
-		/*Scanner userInput = new Scanner(System.in);
-		String input = userInput.next();
+		Scanner userInput = new Scanner(System.in);
+		String input = userInput.nextLine();
 		Spreadsheet excel = new Spreadsheet();
 		while (!(input.toLowerCase()).equals("quit")) {
 			System.out.println(excel.processCommand(input));
-			input = userInput.next();
+			input = userInput.nextLine();
 		}
-		userInput.close(); */
-		Spreadsheet excel = new Spreadsheet();
-		System.out.println(excel.getGridText());
-		excel.processCommand("E20 = meow");
-	
+		userInput.close(); 
+
+
 		
 	}
 }

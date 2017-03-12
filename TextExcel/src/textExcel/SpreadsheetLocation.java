@@ -6,7 +6,6 @@ public class SpreadsheetLocation implements Location
 {
 	private int col = 0;
 	private int row = 0;
-	private Cell cellHere;
     @Override
     public int getRow()
     {
@@ -28,10 +27,7 @@ public class SpreadsheetLocation implements Location
     		row = Integer.parseInt(cellName.substring(1)) - 1;
     		
     	}
-   public Cell getCellHere() {
-	   return this.cellHere;
-   }
-    
+
     }
 
 
