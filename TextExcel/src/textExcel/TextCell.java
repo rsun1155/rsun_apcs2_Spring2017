@@ -8,12 +8,12 @@ public class TextCell implements Cell {
 
 	@Override
 	public String abbreviatedCellText() {
-		String fauxValue = value;
-		if (value.length() >= 10) {
-			return value.substring(0, 11);
+		String fauxValue = value.replace("\"", "");
+		if (value.length() >= 11) {
+			return value.substring(1, 11);
 		}
 		else { //This is padToTen
-			for (int i = value.length(); i < 10; i++) {
+			for (int i = value.length(); i < 12; i++) {
 				fauxValue += " ";
 			}
 			return fauxValue;

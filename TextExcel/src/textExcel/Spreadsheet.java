@@ -26,7 +26,7 @@ public class Spreadsheet implements Grid
 				return ""; 
 			}
 		String [] parseCommand = command.split(" ");
-			if (parseCommand.length == 1) {
+			if (parseCommand.length == 1 && !parseCommand[0].toLowerCase().contains("clear") && !parseCommand[0].equals("")) {
 				int [] dimensions = getLoc(parseCommand[0]);
 				
 				return spreadsheet[dimensions[0]][dimensions[1]].fullCellText();
@@ -37,8 +37,13 @@ public class Spreadsheet implements Grid
 				for (int count = 3; count < parseCommand.length; count++){
 					text += " " + parseCommand[count];
 				}
+					if (!text.equals("")) {
 				spreadsheet[dimensions[0]][dimensions[1]] = new TextCell(text);
-				return getGridText();
+					return getGridText();
+					}
+				else {
+					return getGridText();
+				}
 				
 			}
 			else if (parseCommand[0].toLowerCase().contains("clear") && parseCommand.length == 1) {
@@ -88,7 +93,7 @@ public class Spreadsheet implements Grid
 			fauxArray += i + 1 + " ";
 			}
 			for (int j = 0; j < this.getCols(); j++) {
-				fauxArray += "|" + spreadsheet[i][j].abbreviatedCellText();
+				fauxArray += "|" + spreadsheet[i][j].abbreviatedCellText().replace("\"", " ");
 			}
 			fauxArray += "|\n";
 		}		
