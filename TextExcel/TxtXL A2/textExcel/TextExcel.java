@@ -12,17 +12,16 @@ public class TextExcel
 	public static void main(String[] args)
 	{
 	
-		/*Scanner userInput = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 		String input = userInput.nextLine();
 		Spreadsheet excel = new Spreadsheet();
 		while (!(input.toLowerCase()).equals("quit")) {
 			System.out.println(excel.processCommand(input));
 			input = userInput.nextLine();
 		}
-		userInput.close(); */
+		userInput.close(); 
 
-		PercentCell hi = new PercentCell("700%");
-		System.out.print(hi.getDoubleValue());
+
 		
 	}
 }
