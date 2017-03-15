@@ -3,10 +3,10 @@ package textExcel;
 public class PercentCell extends RealCell {
 
 	public PercentCell(String value) {
-		this.value = value;
+		setValue(value);
 	}
 	public double getDoubleValue() {
-		String cutValue = value.substring(0, value.length() - 1);
+		String cutValue = getValue().substring(0, getValue().length() - 1);
 		
 		return(Double.parseDouble(cutValue)/100.0);
 	}

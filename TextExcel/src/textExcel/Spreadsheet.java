@@ -26,7 +26,26 @@ public class Spreadsheet implements Grid
 				return ""; 
 			}
 		String [] parseCommand = command.split(" ");
-			if (parseCommand.length == 1 && !parseCommand[0].toLowerCase().contains("clear") && !parseCommand[0].equals("")) {
+			if (parseCommand.length > 3 && (parseCommand[2].contains("+")||parseCommand[3].contains("-")||parseCommand[1].contains("*")||parseCommand[1].contains("/"))) {
+				int [] dimensions = getLoc(parseCommand[0]);
+				String inputText = "";
+				for (int i = 2; i < parseCommand.length; i++) {
+					inputText += parseCommand[i];
+				}
+				spreadsheet[dimensions[0]][dimensions[1]] = new FormulaCell(inputText);
+				return getGridText();
+			}
+			else if (parseCommand.length == 3 && parseCommand[2].contains("%")){
+				int [] dimensions = getLoc(parseCommand[0]);
+				spreadsheet[dimensions[0]][dimensions[1]] = new PercentCell(parseCommand[2]);
+				return getGridText();
+			}
+			else if (parseCommand.length == 3 && parseCommand[2].contains(".")) {
+				int [] dimensions = getLoc(parseCommand[0]);
+				spreadsheet[dimensions[0]][dimensions[1]] = new ValueCell(parseCommand[2]);
+				return getGridText();
+			}
+			else if (parseCommand.length == 1 && !parseCommand[0].toLowerCase().contains("clear") && !parseCommand[0].equals("")) {
 				int [] dimensions = getLoc(parseCommand[0]);
 				
 				return spreadsheet[dimensions[0]][dimensions[1]].fullCellText();

@@ -6,12 +6,12 @@ abstract class RealCell implements Cell
 	
 	public String abbreviatedCellText()
 	{
-		String fauxValue = value.replace("\"", "");
-		if (value.length() >= 11) {
-			return value.substring(1, 11);
+		if (value.length() > 10) {
+			return value.substring(0, 10);
 		}
 		else { //This is padToTen
-			for (int i = value.length(); i < 12; i++) {
+			String fauxValue = value;
+			for (int i = value.length(); i < 10; i++) {
 				fauxValue += " ";
 			}
 			return fauxValue;
@@ -23,7 +23,9 @@ abstract class RealCell implements Cell
 	public String getValue() {
 		return this.value;
 	}
-	public void setValue(String text)
+	public void setValue(String text) {
+		this.value = text;
+	}
 	abstract double getDoubleValue();
 
 }
