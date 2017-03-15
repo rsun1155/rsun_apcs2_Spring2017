@@ -2,7 +2,7 @@ package textExcel;
 
 abstract class RealCell implements Cell
 {
-	protected String value;
+	private String value;
 	
 	public String abbreviatedCellText()
 	{
@@ -20,6 +20,10 @@ abstract class RealCell implements Cell
 	public String fullCellText() {
 		return "" + getDoubleValue();
 	}
+	public String getValue() {
+		return this.value;
+	}
+	public void setValue(String text)
 	abstract double getDoubleValue();
 
 }
