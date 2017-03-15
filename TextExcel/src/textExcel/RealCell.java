@@ -2,8 +2,8 @@ package textExcel;
 
 abstract class RealCell implements Cell
 {
-	String value;
-
+	protected String value;
+	
 	public String abbreviatedCellText()
 	{
 		String fauxValue = value.replace("\"", "");
@@ -17,8 +17,8 @@ abstract class RealCell implements Cell
 			return fauxValue;
 		}
 	}
-	public String fullCellText(double value) {
-		return this.value;
+	public String fullCellText() {
+		return "" + getDoubleValue();
 	}
 	abstract double getDoubleValue();
 

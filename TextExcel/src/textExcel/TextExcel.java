@@ -21,8 +21,9 @@ public class TextExcel
 		}
 		userInput.close(); */
 
-		PercentCell hi = new PercentCell("700%");
-		System.out.print(hi.getDoubleValue());
-		
+		PercentCell hi = new PercentCell("89.00%");
+		System.out.println(hi.fullCellText());
+		ValueCell value = new ValueCell("8.000");
+		System.out.println(value.fullCellText());
 	}
 }

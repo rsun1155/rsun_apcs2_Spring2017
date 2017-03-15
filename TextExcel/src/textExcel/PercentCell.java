@@ -1,7 +1,7 @@
 package textExcel;
 
 public class PercentCell extends RealCell {
-	private String value;
+
 	public PercentCell(String value) {
 		this.value = value;
 	}
@@ -10,8 +10,5 @@ public class PercentCell extends RealCell {
 		
 		return(Double.parseDouble(cutValue)/100.0);
 	}
-	@Override
-	public String fullCellText() {
-		return getDoubleValue();
-	}
+
 }
