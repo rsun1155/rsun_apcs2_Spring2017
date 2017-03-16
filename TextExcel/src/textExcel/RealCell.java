@@ -6,6 +6,8 @@ abstract class RealCell implements Cell
 	
 	public String abbreviatedCellText()
 	{
+		
+		value = getDoubleValue() + "";
 		if (value.length() > 10) {
 			return value.substring(0, 10);
 		}

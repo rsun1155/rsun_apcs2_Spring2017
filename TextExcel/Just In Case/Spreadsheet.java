@@ -34,32 +34,31 @@ public class Spreadsheet implements Grid
 					}
 			}
 				else if (parseCommand.length == 2) { //clear a single cell
-					SpreadsheetLocation loc = getLoc(parseCommand[1]);
+					SpreadsheetLocation loc = getLoc(parseCommand[0]);
 					spreadsheet[loc.getRow()][loc.getCol()] = new EmptyCell();
 					return getGridText();
 				}
 				else if (parseCommand.length >= 3) { //Percent Cell
 					SpreadsheetLocation loc = getLoc(parseCommand[0]);
-					String longString = parseCommand[2];
-					for (int i = 3; i < parseCommand.length; i++) {
-						longString += " " + parseCommand[i];
+					String longString = "";
+					for (int i = 2; i < parseCommand.length; i++) {
+						longString += parseCommand[i];
 					}
-					if (parseCommand[2].contains("%") && !parseCommand[2].contains("\"")) {
-						
-						spreadsheet[loc.getRow()][loc.getCol()] = new PercentCell(parseCommand[2]);
+					if (parseCommand[2].contains("%")) {
+						spreadsheet[loc.getRow()][loc.getCol()] = new PercentCell(parseCommand[0]);
 						
 					}
-					else if (parseCommand.length > 3 && parseCommand[2].equals("+") || parseCommand[2].equals("-") || parseCommand[2].equals("*") ||parseCommand[2].equals("/")) {
+					else if (parseCommand[2].equals("+") || parseCommand[2].equals("-") || parseCommand[2].equals("*") ||parseCommand[2].equals("/")) {
 						spreadsheet[loc.getRow()][loc.getCol()] = new FormulaCell(longString);
-						//Formula Cell
+						
 					}
-					else if (!parseCommand[2].contains("\"")) {
-						spreadsheet[loc.getRow()][loc.getCol()] = new ValueCell(parseCommand[2]);
-						//Value Cell
+					else if (parseCommand[2].contains(".")) {
+						spreadsheet[loc.getRow()][loc.getCol()] = new ValueCell(parseCommand[0]);
+						
 					}
 					else {
 						spreadsheet[loc.getRow()][loc.getCol()] = new TextCell(longString);
-					} //Text Cell
+					}
 					return getGridText();
 				}
 				else {
