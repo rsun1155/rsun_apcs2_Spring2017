@@ -5,7 +5,7 @@ public class ValueCell extends RealCell {
 		setValue(input);
 	}
 	public double getDoubleValue() {
-		double holder = Double.parseDouble(getValue());
+		double holder = Double.parseDouble(this.getValue());
 		return holder;
 	}
 

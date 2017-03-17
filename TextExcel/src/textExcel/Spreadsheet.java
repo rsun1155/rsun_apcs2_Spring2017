@@ -106,7 +106,12 @@ public class Spreadsheet implements Grid
 			fauxArray += i + 1 + " ";
 			}
 			for (int j = 0; j < this.getCols(); j++) {
+				if (spreadsheet[i][j].abbreviatedCellText().contains("\"")) {
 				fauxArray += "|" + spreadsheet[i][j].abbreviatedCellText().replace("\"", " ");
+				}
+				else {
+					fauxArray += "|" + spreadsheet[i][j].abbreviatedCellText();
+					}
 			}
 			fauxArray += "|\n";
 		}		
