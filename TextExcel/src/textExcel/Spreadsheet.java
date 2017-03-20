@@ -53,8 +53,7 @@ public class Spreadsheet implements Grid {
 
 					spreadsheet[loc.getRow()][loc.getCol()] = new PercentCell(parseCommand[2]);
 
-				} else if (parseCommand.length > 3 && parseCommand[2].equals("+") || parseCommand[2].equals("-")
-						|| parseCommand[2].equals("*") || parseCommand[2].equals("/")) {
+				} else if (parseCommand.length > 3 && parseCommand[2].equals("(") ) {
 					spreadsheet[loc.getRow()][loc.getCol()] = new FormulaCell(longString);
 					// Formula Cell
 				} else if (!parseCommand[2].contains("\"")) {
@@ -150,7 +149,7 @@ public class Spreadsheet implements Grid {
 			for (int j = 0; i < this.getCols(); i++) {
 				Cell cell = spreadsheet[i][j];
 				if (! (cell instanceof EmptyCell)) {
-				String location = String.valueOf(j + 'A') + String.valueOf(i);
+				String location = String.valueOf(j - 'A') + String.valueOf(i);
 				outputFile.println(location + "," + getCellType(cell) + "," + cell.fullCellText());
 				}
 			}
