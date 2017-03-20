@@ -49,11 +49,8 @@ public class Spreadsheet implements Grid {
 					longString += " " + parseCommand[i];
 				}
 
-				if (parseCommand[2].contains("%") && !parseCommand[2].contains("\"")) { // Percent
-																						// Cell
-
+				if (parseCommand[2].contains("%") && !parseCommand[2].contains("\"")) { // Percent Cell
 					spreadsheet[loc.getRow()][loc.getCol()] = new PercentCell(parseCommand[2]);
-
 				} else if (parseCommand.length > 3 && parseCommand[2].equals("(") ) {
 					spreadsheet[loc.getRow()][loc.getCol()] = new FormulaCell(longString);
 					// Formula Cell
@@ -179,7 +176,7 @@ public class Spreadsheet implements Grid {
 			} else if (command[1].equals("FormulaCell")) {
 				cell = new FormulaCell(command[2]);
 			} else if (command[1].equals("PercentCell")) {
-				cell = new PercentCell(command[2]);
+				cell = new PercentCell(Double.parseDouble(command[2])/100.0 + "%");
 			}
 			spreadsheet[loc.getRow()][loc.getCol()] = cell;
 
