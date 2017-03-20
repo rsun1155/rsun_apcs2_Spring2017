@@ -29,7 +29,7 @@ abstract class RealCell implements Cell
 	public String fullCellText() {
 		String value = getDoubleValue() + "";
 			if (!value.contains("%") && value.contains(".0") 
-					&& isDecimalEqualToZero(value)
+					&& isDecimailEqualToZero(value)
 					&& value.replace("-", "").length() > 3) {
 				return value.substring(0, value.indexOf("."));
 			}
@@ -44,7 +44,7 @@ abstract class RealCell implements Cell
 	public void setValue(String text) {
 		this.value = text;
 	}
-	private boolean isDecimalEqualToZero(String doubleValue) {
+	private boolean isDecimailEqualToZero(String doubleValue) {
 		String[] n = doubleValue.split("\\.");
 		if(n.length > 1) {
 			// get the value to right of decimal point
