@@ -1,6 +1,6 @@
 package textExcel;
 
-//Ryan Sun 2nd period 3/5/2017
+//Ryan Sun 2nd period 3/20/2017 class that represents a location on the spreadsheet storing the row and the column.
 
 public class SpreadsheetLocation implements Location
 {

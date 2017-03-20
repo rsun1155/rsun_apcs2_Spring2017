@@ -1,5 +1,6 @@
 package textExcel;
-//Ryan Sun 2nd Period 3/5/2017 TextExcel 
+//Ryan Sun 2nd Period 3/20/2017 TextExcel 
+//This program accepts user input from the console and incorporates that data into the spreadsheet.
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;

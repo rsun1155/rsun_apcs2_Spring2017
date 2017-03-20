@@ -1,5 +1,5 @@
 package textExcel;
-
+//Ryan Sun 3/20/17 2nd period     class that overarches over any numeric value.
 abstract class RealCell implements Cell
 {
 	private String value;

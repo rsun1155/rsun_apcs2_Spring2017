@@ -1,5 +1,5 @@
 package textExcel;
-
+// Ryan Sun 2nd period  3/20/17   this class represents literal text passed into the spreadsheet
 public class TextCell implements Cell {
 	String value;
 	public TextCell(String text) {
