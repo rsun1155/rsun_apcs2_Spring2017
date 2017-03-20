@@ -168,7 +168,7 @@ public class Spreadsheet implements Grid {
 		}
 		while (inputFile.hasNextLine()) {
 			String input = inputFile.nextLine();
-			String[] command = input.split(" ");
+			String[] command = input.split(",");
 			SpreadsheetLocation loc = getLoc(command[0]);
 			Cell cell = new EmptyCell(); // Just to get Java to initialize it
 			if (command[1].equals("TextCell")) {
@@ -179,13 +179,13 @@ public class Spreadsheet implements Grid {
 			} else if (command[1].equals("FormulaCell")) {
 				cell = new FormulaCell(command[2]);
 			} else if (command[1].equals("PercentCell")) {
-				cell = new PercentCell("command[2]");
+				cell = new PercentCell(command[2]);
 			}
 			spreadsheet[loc.getRow()][loc.getCol()] = cell;
 
 		}
 		inputFile.close();
-		return "All done!";
+		return getGridText();
 	}
 
 	public String getCellType(Cell cell) {
