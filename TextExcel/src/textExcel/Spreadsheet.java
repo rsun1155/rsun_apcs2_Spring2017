@@ -30,7 +30,7 @@ public class Spreadsheet implements Grid
 					}
 					else { //Display Cell
 						SpreadsheetLocation loc = getLoc(parseCommand[0]);
-						return spreadsheet[loc.getRow()][loc.getCol()].fullCellText();
+						return getCell(loc).fullCellText();
 					}
 			}
 				else if (parseCommand.length == 2) { //clear a single cell
@@ -38,13 +38,13 @@ public class Spreadsheet implements Grid
 					spreadsheet[loc.getRow()][loc.getCol()] = new EmptyCell();
 					return getGridText();
 				}
-				else if (parseCommand.length >= 3) { //Percent Cell
+				else if (parseCommand.length >= 3) {
 					SpreadsheetLocation loc = getLoc(parseCommand[0]);
 					String longString = parseCommand[2];
 					for (int i = 3; i < parseCommand.length; i++) {
 						longString += " " + parseCommand[i];
 					}
-					if (parseCommand[2].contains("%") && !parseCommand[2].contains("\"")) {
+					if (parseCommand[2].contains("%") && !parseCommand[2].contains("\"")) { //Percent Cell
 						
 						spreadsheet[loc.getRow()][loc.getCol()] = new PercentCell(parseCommand[2]);
 						

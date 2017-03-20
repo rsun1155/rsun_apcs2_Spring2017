@@ -11,4 +11,5 @@ public class PercentCell extends RealCell {
 		return(Double.parseDouble(cutValue)/100.0);
 	}
 
+
 }
