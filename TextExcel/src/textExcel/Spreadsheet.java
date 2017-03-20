@@ -1,10 +1,11 @@
 package textExcel;
 
-import java.util.Arrays;
-import java.util.*;
-import java.io.*;
 // Ryan Sun 2nd Period 3/5/2017
 // This class controls the behavior of the overall spreadsheet of the TextExcel project
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Scanner;
 
 public class Spreadsheet implements Grid {
 	private Cell[][] spreadsheet;
@@ -146,11 +147,11 @@ public class Spreadsheet implements Grid {
 			return "File not found: " + filename;
 		}
 		for (int i = 0; i < this.getRows(); i++) {
-			for (int j = 0; i < this.getCols(); i++) {
+			for (int j = 0; j < this.getCols(); j++) {
 				Cell cell = spreadsheet[i][j];
 				if (! (cell instanceof EmptyCell)) {
-				String location = String.valueOf(j - 'A') + String.valueOf(i);
-				outputFile.println(location + "," + getCellType(cell) + "," + cell.fullCellText());
+					String location =  (char)(j + 'A') + String.valueOf(i+1);
+					outputFile.println(location + "," + getCellType(cell) + "," + cell.fullCellText());
 				}
 			}
 		}

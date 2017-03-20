@@ -28,7 +28,10 @@ abstract class RealCell implements Cell
 	}
 	public String fullCellText() {
 		String value = getDoubleValue() + "";
-			if (!value.contains("%") && value.contains(".0") 
+			if(getValue().equals("0")) {
+				return getValue();
+			}
+			else if (!value.contains("%") && value.contains(".0") 
 					&& isDecimalEqualToZero(value)
 					&& value.replace("-", "").length() > 3) {
 				return value.substring(0, value.indexOf("."));
