@@ -9,9 +9,15 @@ public class FormulaCell extends RealCell {
 
 	
 	double getDoubleValue() {
-		
+
 		String value = this.getValue().substring(2, getValue().length() - 2);
 		String [] expression = value.split(" ");
+		for (int i = 0; i < expression.length; i++) {
+			if (expression[i].charAt(0) >= 'A' && expression[i].charAt(0) <= 'L') {
+				SpreadsheetLocation loc = sheet.getLoc(expression[i]);
+				Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
+				expression[i] = ((RealCell)cell).getDoubleValue() + "";	}
+		}
 		double standingValue = Double.parseDouble(expression[0]);
 		for (int i = 1; i < expression.length; i++) {
 			if (expression[i].equals("*")) 

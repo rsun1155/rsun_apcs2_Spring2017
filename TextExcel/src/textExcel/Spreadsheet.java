@@ -198,4 +198,7 @@ public class Spreadsheet implements Grid {
 			return "";
 		}
 	}
+	public Cell [][] getSheet() {
+		return this.spreadsheet;
+	}
 }
