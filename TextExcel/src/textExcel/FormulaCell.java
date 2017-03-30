@@ -12,6 +12,7 @@ public class FormulaCell extends RealCell {
 
 		String value = this.getValue().substring(2, getValue().length() - 2);
 		String [] expression = value.split(" ");
+			if (!expression[0].equals("SUM") && !expression[0].equals("AVG")) {
 		for (int i = 0; i < expression.length; i++) {
 			if (expression[i].charAt(0) >= 'A' && expression[i].charAt(0) <= 'L') {
 				SpreadsheetLocation loc = sheet.getLoc(expression[i]);
@@ -50,5 +51,12 @@ public class FormulaCell extends RealCell {
 	}
 	public String fullCellText() {
 		return getValue();
+	}
+	public double sum (Cell [][] range) {
+	
+	
+			
+		
+		}
 	}
 }
