@@ -10,7 +10,7 @@ abstract class RealCell implements Cell
 		if (value.contains("%") && value.contains(".")) {
 			fauxValue =	value.replace(value.substring(value.indexOf(".")), "%");
 		}
-		else { 
+		else if (!value.contains("%")) { 
 			fauxValue = Double.parseDouble(value) + "";
 		}
 	
@@ -48,6 +48,9 @@ abstract class RealCell implements Cell
 		this.value = text;
 	}
 	private boolean isDecimalEqualToZero(String doubleValue) {
+		if (doubleValue.contains("%")) {
+			return false;
+		}
 		String[] n = doubleValue.split("\\.");
 		if(n.length > 1) {
 			// get the value to right of decimal point
