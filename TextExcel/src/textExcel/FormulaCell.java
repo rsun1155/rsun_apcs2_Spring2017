@@ -66,7 +66,7 @@ public class FormulaCell extends RealCell {
 			SpreadsheetLocation loc = sheet.getLoc(loc2);
 			Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
 			return ((RealCell) cell).getDoubleValue();
-		} else if (loc1.charAt(1) == 20) {
+		} else if (loc1.indexOf("20") == 1) {
 			SpreadsheetLocation loc = sheet.getLoc(loc1);
 			loc1 = (loc1.charAt(0) + 1) + "1";
 			Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
@@ -77,7 +77,7 @@ public class FormulaCell extends RealCell {
 			}
 		} else {
 			SpreadsheetLocation loc = sheet.getLoc(loc1);
-			loc1 = loc1.substring(0, 1) + (Character.getNumericValue(loc1.charAt(1)) + 1);
+			loc1 = loc1.substring(0, 1) + (Integer.parseInt(loc1.substring(1)) + 1);
 			Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
 			if (cell instanceof RealCell) {
 			return ((RealCell) cell).getDoubleValue() + sum(loc1, loc2);
@@ -94,7 +94,7 @@ public class FormulaCell extends RealCell {
 		if (loc1.equals(loc2)) {
 			return 1;
 		}
-			else if (loc1.charAt(1) == 20) {
+			else if (loc1.indexOf("20") == 1) {
 			loc1 = (loc1.charAt(0) + 1) + "1";
 			if (sheet.getSheet()[loc.getRow()][loc.getCol()] instanceof RealCell) {
 			return 1 + countRange(loc1, loc2);
@@ -102,7 +102,7 @@ public class FormulaCell extends RealCell {
 				return countRange(loc1, loc2);
 			}
 		} else {
-			loc1 = loc1.substring(0, 1) + (Character.getNumericValue(loc1.charAt(1)) + 1);
+			loc1 = loc1.substring(0, 1) + (Integer.parseInt(loc1.substring(1)) + 1);
 			if (sheet.getSheet()[loc.getRow()][loc.getCol()] instanceof RealCell) {
 			return 1 + countRange(loc1, loc2);
 			} 
