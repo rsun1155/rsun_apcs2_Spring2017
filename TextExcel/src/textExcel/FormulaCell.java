@@ -65,10 +65,15 @@ public class FormulaCell extends RealCell {
 		if (loc1.equals(loc2)) {
 			SpreadsheetLocation loc = sheet.getLoc(loc2);
 			Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
+			if (cell instanceof RealCell) {
 			return ((RealCell) cell).getDoubleValue();
+			}
+			else {
+				return 0.0;
+			}
 		} else if (loc1.indexOf("20") == 1) {
 			SpreadsheetLocation loc = sheet.getLoc(loc1);
-			loc1 = (loc1.charAt(0) + 1) + "1";
+			loc1 = ((char)(loc1.charAt(0) + 1)) + "1";
 			Cell cell = sheet.getSheet()[loc.getRow()][loc.getCol()];
 			if (cell instanceof RealCell) {
 			return ((RealCell) cell).getDoubleValue() + sum(loc1, loc2);
