@@ -1,0 +1,15 @@
+package textExcel;
+//Ryan Sun 2nd period 3/20/17 class that represents a percent value evaluated by the spreadsheet class
+public class PercentCell extends RealCell {
+
+	public PercentCell(String value) {
+		setValue(value);
+	}
+	public double getDoubleValue() {
+		String cutValue = getValue().substring(0, getValue().length() - 1);
+		
+		return(Double.parseDouble(cutValue)/100.0);
+	}
+
+
+}
