@@ -1,6 +1,8 @@
 package swing.x;
 
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -8,6 +10,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 
@@ -17,16 +21,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
 
 public class Window {
 
 	private JFrame frame;
 	protected JSlider slider;
-	
-	/**
-	 * @wbp.nonvisual location=-19,329
-	 */
-	private final JLabel label = new JLabel("New label");
 	/**
 	 * Launch the application.
 	 */
@@ -60,6 +61,11 @@ public class Window {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setFocusable(true);
+		// title and size of the window
+			frame.setTitle("TAP OF WAR!");
+		 	frame.setSize(500,500);
+		 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 	frame.setResizable(false);
 		
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -77,13 +83,27 @@ public class Window {
 		JMenuItem menuItem = new JMenuItem("");
 		menuBar.add(menuItem);
 		
-		this.slider = new JSlider();
-		slider.setEnabled(false);
-		frame.getContentPane().add(slider, BorderLayout.SOUTH);
+		         
+		         JLabel label = new JLabel("TAP OF WAR");
+		         label.setBounds(750,450,100,100);
+		         label.setFont(label.getFont().deriveFont(Font.BOLD, 48));
+		         label.setForeground(Color.GRAY);
+		         frame.getContentPane().add(label);
+		         FlowLayout flowLayout = new FlowLayout();
+		         frame.getContentPane().setLayout(flowLayout);
+		         this.slider = new JSlider();
+		         slider.setBackground(Color.RED);
+		 		slider.setEnabled(false);
+		 		frame.getContentPane().add(slider, BorderLayout.NORTH);
 	
 		
 		
-		frame.addKeyListener(new KeysPrac(slider));
+		frame.addKeyListener(new KeysPrac(slider, frame, label));
+		
+		JLabel doneLabel = new JLabel("GAME OVER");
+		doneLabel.setFont(doneLabel.getFont().deriveFont(Font.BOLD, 96));
+		doneLabel.setVisible(false);
+		frame.getContentPane().add(doneLabel);
 		
 	}
 
