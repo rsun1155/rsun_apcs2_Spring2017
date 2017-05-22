@@ -4,66 +4,41 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class KeysPrac extends JFrame implements KeyListener {
-
+	protected JSlider slider;
+	private ArrayList<KeyEvent> moves;
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KeysPrac frame = new KeysPrac();
-					frame.setVisible(true);
-					frame.setFocusable(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public KeysPrac() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		contentPane.setFocusable(true);
-		JButton btnMeow = new JButton("Meow");
-		contentPane.add(btnMeow, BorderLayout.CENTER);
-		this.addKeyListener(this);
-		
+	public KeysPrac(JSlider slider) {
+		this.slider = slider;
+		 moves = new ArrayList<KeyEvent>();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			System.out.println("right");
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			System.out.println("left");
-		}
+		this.moves.add(e);
+			
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		move();
+		
 		
 	}
 
@@ -71,6 +46,16 @@ public class KeysPrac extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void move () {
+		for (KeyEvent e: moves) {
+			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				slider.setValue(slider.getValue() + 5);
+			}
+			else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				slider.setValue(slider.getValue()-5);
+			}
+		}
 	}
 
 }
