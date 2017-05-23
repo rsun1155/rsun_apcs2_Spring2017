@@ -63,7 +63,7 @@ public class Window {
 		frame.setFocusable(true);
 		// title and size of the window
 			frame.setTitle("TAP OF WAR!");
-		 	frame.setSize(500,500);
+		 	frame.setSize(600,600);
 		 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 	frame.setResizable(false);
 		
@@ -99,13 +99,16 @@ public class Window {
 		
 		
 		frame.addKeyListener(new KeysPrac(slider, frame, label));
-		
-		JLabel doneLabel = new JLabel("GAME OVER");
-		doneLabel.setFont(doneLabel.getFont().deriveFont(Font.BOLD, 96));
-		doneLabel.setVisible(false);
-		frame.getContentPane().add(doneLabel);
+		/*  JLabel label2 = new JLabel(new ImageIcon(getClass().getResource("/tugging.png")));
+	        label2.setBounds(720,675,547,232);
+	        add(label2);
+	        
+	        JLabel background = new JLabel(new ImageIcon(getClass().getResource("/flowers.gif")));
+	        background.setBounds(0,0,1920,1080);
+	        add(background); */
 		
 	}
+	
 
 	
 	public JFrame getFrame() { 
