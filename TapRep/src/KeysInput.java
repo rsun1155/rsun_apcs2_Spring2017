@@ -70,9 +70,9 @@ public class KeysInput implements KeyListener{
 		 JButton playAgain = new JButton("Play Again?");
 	        playAgain.setEnabled(true);
 	        playAgain.setSize(250, 250);
-	        playAgain.setLocation(627, 238);
+	        playAgain.setLocation(98, 238);
 	        playAgain.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-	        playAgain.setHorizontalAlignment(SwingConstants.LEFT);
+	        playAgain.setHorizontalAlignment(SwingConstants.CENTER);
 			JButton close = new JButton("Done?");
 			close.setEnabled(true);
 			close.setSize(250, 250);

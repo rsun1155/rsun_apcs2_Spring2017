@@ -13,8 +13,9 @@ public class Start implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		frame.init();
 		button.setVisible(false);
+		frame.init();
+		
 
 	}
 

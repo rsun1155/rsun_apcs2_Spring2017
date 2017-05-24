@@ -59,30 +59,26 @@ public class Frame extends JFrame {
 		public void init(){
 			//placing the images and scene on the frame
 			getContentPane().setLayout(null);
-			
-			
-	       
-	        
-	        JLabel label = new JLabel("TAP OF WAR"); //Title label
+			 JLabel label = new JLabel("TAP OF WAR"); //Title label
 	        label.setFont(label.getFont().deriveFont(Font.BOLD, 24));
 	        label.setForeground(Color.GRAY);
-	        label.setBounds(884,500,160,100);
+	        label.setBounds(640,310,160,100);
 	        getContentPane().add(label);
 	        JSlider slider = new JSlider(); //initializes and customizes slider. User cannot directly move slider
-			slider.setLocation(883, 799);
+			slider.setLocation(631, 540);
 			slider.setSize(169, 26);
 			slider.setEnabled(false);
 	        slider.setBackground(Color.RED);
 			getContentPane().add(slider, BorderLayout.NORTH);
 			
-			//Tug image. Source: 
+			//Tug image. Source: http://search.coolclips.com/m/vector/vc103505/tug-of-war/
 			 JLabel label2 = new JLabel(new ImageIcon(getClass().getResource("/tug.png"))); 
-		        label2.setBounds(720,675,480,305);
+		        label2.setBounds(480,410,480,305);
 		        getContentPane().add(label2);
 		        //Background image. Source: http://www.fubiz.net/2015/08/05/everyday-life-in-japan-8-bit-gifs/
 		        JLabel background = new JLabel(new ImageIcon(getClass().getResource("/flowers.gif")));
 		        background.setHorizontalAlignment(SwingConstants.LEFT);
-		        background.setBounds(0,0,1920,1080);
+		        background.setBounds(0,0,1440,720);
 		        background.setOpaque(false);
 		        getContentPane().add(background);
 		        KeysInput keys = new KeysInput(slider, this, background); //Sets slider to respond to keyboard input
