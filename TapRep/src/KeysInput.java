@@ -1,4 +1,5 @@
-
+//Tap of War: Hannah Ku, Brandon Nguyen, Ryan Sun 2nd period
+//Key Listener class taking input in from the keyboard taps
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,14 +29,13 @@ public class KeysInput implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!done)
-		this.moves.add(e);
+		
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub 
+	public void keyReleased(KeyEvent e) { //Prevents players from just holding down the key
+		this.moves.add(e);
 		if (!done)
 		move();
 		if (done) 
@@ -45,17 +45,17 @@ public class KeysInput implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	public void move () {
 		
 		for (KeyEvent e: moves) {
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				slider.setValue(slider.getValue() + 2);
+				slider.setValue(slider.getValue() + (int)(Math.random() * 5));
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				slider.setValue(slider.getValue()-2);
+				slider.setValue(slider.getValue()-(int)(Math.random() * 5));
 			}
 		}
 		moves = new ArrayList<KeyEvent>();
@@ -66,7 +66,7 @@ public class KeysInput implements KeyListener{
 	public boolean isDone() {
 		return done;
 	}
-	public void finishSequence () {
+	public void finishSequence () { //Execute end sequence. Presents option to continue.
 		 JButton playAgain = new JButton("Play Again?");
 	        playAgain.setEnabled(true);
 	        playAgain.setSize(250, 250);
