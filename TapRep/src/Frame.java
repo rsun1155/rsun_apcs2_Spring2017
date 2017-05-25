@@ -36,11 +36,11 @@ public class Frame extends JFrame {
 			
 			// title and size of the window
 			setTitle("TAP OF WAR! Ku, Nguyen, Sun, 2nd period APCS");
-			setSize(1920,1080);
+			setSize(1440,720);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setResizable(false);
 			JButton button = new JButton("TAP OF WAR: TAP TO START!");
-			button.setBackground(Color.PINK);
+			button.setBackground(Color.PINK); //Start Sequence
 			button.setForeground(Color.RED);
 			button.setFont(new Font("Sylfaen", Font.PLAIN, 50));
 	        button.setBounds(910,470,100,30);
